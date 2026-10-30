@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Duermevela · Trenes nocturnos</title>
+  <meta name="description" content="Duermevela: trenes nocturnos con coche-cama entre Madrid, Barcelona, Lisboa, París, Milán y Zúrich. Te duermes en una ciudad y despiertas en otra.">
+  <meta name="theme-color" content="#18191b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Hanken+Grotesk:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <div class="signal" aria-hidden="true"></div>
+
+  <!-- Dos fotografías a sangre; el raíl cruza la mitad de la primera y se acopla arriba al pasar la segunda -->
+  <div class="hero-pics" aria-hidden="true">
+    <figure class="hero-pic hero-pic--a">
+<video class="hero-video is-on" muted playsinline preload="none"
+             poster="https://images.pexels.com/videos/11397355/pexels-photo-11397355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920"
+             data-tall-poster="https://images.pexels.com/videos/34105869/train-traveling-by-train-34105869.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900"></video>
+      <video class="hero-video" muted playsinline preload="none"></video>
+    </figure>
+    <figure class="hero-pic hero-pic--b">
+      <img src="https://images.unsplash.com/photo-1672687651938-f1100b995714?w=2000&q=72&auto=format&fit=crop"
+           srcset="https://images.unsplash.com/photo-1672687651938-f1100b995714?w=800&h=1400&q=70&auto=format&fit=crop 800w,
+                   https://images.unsplash.com/photo-1672687651938-f1100b995714?w=2000&q=72&auto=format&fit=crop 2000w"
+           sizes="100vw" width="2000" height="1333" alt="" loading="lazy">
+    </figure>
+  </div>
+
+  <!-- Controles del vídeo: progreso de cada plano y pausa -->
+  <div class="reel" id="reel" hidden>
+    <div class="reel__bars" aria-hidden="true"></div>
+    <button class="reel__toggle" type="button" aria-pressed="false">Pausar vídeo</button>
+  </div>
+  <a class="scroll-cue" href="#salidas" aria-label="Bajar a las salidas de esta noche"><span>Baja a ver la noche</span><i aria-hidden="true">↓</i></a>
+
+  <header class="rail" id="rail">
+    <div class="rail__inner">
+      <h1 class="rail__title"><a href="#"><span class="w"><span style="--i:0">Duermevela,</span></span> <span class="w"><span style="--i:1">trenes</span></span> <span class="w"><span style="--i:2">nocturnos</span></span></a></h1>
+      <p class="rail__line">Te duermes en una ciudad y despiertas en otra.</p>
+      <p class="rail__clock" aria-hidden="true" title="La hora a bordo avanza con la página"><span data-clock>21:40</span></p>
+      <nav class="rail__nav" aria-label="Principal">
+        <a href="#rutas">Rutas</a>
+        <a href="#a-bordo">A bordo</a>
+        <a href="#tarifas">Tarifas</a>
+        <a class="btn" href="#reservar">Reservar litera</a>
+      </nav>
+      <button class="rail__menu" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+    </div>
+    <div class="menu" id="menu" hidden>
+      <a href="#rutas">Rutas</a>
+      <a href="#a-bordo">A bordo</a>
+      <a href="#tarifas">Tarifas</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#reservar">Reservar litera</a>
+    </div>
+  </header>
+
+  <div class="hero-flow">
+    <div class="hero-phone">
+      <p>Seis rutas con coche-cama entre Madrid, Barcelona, Lisboa, París, Milán y Zúrich.</p>
+      <a class="btn btn--block" href="#reservar">Reservar litera</a>
+    </div>
+    <section class="board" id="salidas" aria-labelledby="board-h">
+      <div class="board__text">
+        <h2 id="board-h" class="h-mid">Salidas de esta noche</h2>
+        <p class="hero-live" data-live-next>Cada noche salen seis trenes; el primero, a las 19:40 desde Barcelona Sants.</p>
+      </div>
+      <table class="board__table">
+        <caption class="sr-only">Horario de salidas, hora local de cada estación</caption>
+        <thead class="sr-only"><tr><th scope="col">Salida</th><th scope="col">Trayecto</th><th scope="col">Estado</th></tr></thead>
+        <tbody>
+          <tr><td class="t">19:40</td><th scope="row">Barcelona → Milán</th><td data-status="milan">Cada noche</td></tr>
+          <tr><td class="t">20:10</td><th scope="row">Barcelona → Zúrich</th><td data-status="zurich">Cada noche</td></tr>
+          <tr><td class="t">20:50</td><th scope="row">Barcelona → París</th><td data-status="paris">Cada noche</td></tr>
+          <tr><td class="t">21:05</td><th scope="row">París → Barcelona</th><td data-status="barcelona">Cada noche</td></tr>
+          <tr><td class="t">21:30</td><th scope="row">Lisboa → Madrid</th><td data-status="madrid">Cada noche</td></tr>
+          <tr><td class="t">22:25</td><th scope="row">Madrid → Lisboa</th><td data-status="lisboa">Cada noche</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <main>
+    <!-- La noche: frase fija a la izquierda, tres momentos de la noche pasan a la derecha -->
+    <section class="night" id="la-noche" aria-labelledby="night-h">
+      <div class="night__text">
+        <h2 id="night-h" class="h-head" data-reveal>Una noche, dos ciudades</h2>
+        <p class="statement" data-reveal style="--i:1">Cenas con el último sol, apagas la luz al entrar en la sierra y abres la cortina en otra ciudad, con el día entero por delante.</p>
+        <p class="body" data-reveal style="--i:2">Seis rutas nocturnas salen entre las 19:40 y las 22:25 y llegan antes de las 9:10. La noche de hotel y la mañana de viaje se convierten en una sola cosa, y la ciudad te recibe descansado.</p>
+      </div>
+      <div class="night__pics">
+        <figure class="night__pic night__pic--1" data-reveal>
+          <img src="https://images.unsplash.com/photo-1763888674063-7e188c7f8103?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy"
+               alt="Dos viajeros cenan en un compartimento de tren de noche, con la ventanilla a oscuras">
+          <figcaption><b>22:10</b> La cena, todavía con luz en la ventanilla. Se sirve en la cabina o en el coche-restaurante, con la carta de la región que cruzas.</figcaption>
+        </figure>
+        <figure class="night__pic night__pic--2" data-reveal>
+          <img src="https://images.unsplash.com/photo-1774850816527-faf657392085?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy"
+               alt="Un viajero duerme en la litera de un compartimento con literas">
+          <figcaption><b>02:40</b> Litera de cuatro, luz de lectura apagada. En las curvas de la sierra el tren baja a 90 km/h y apenas se nota.</figcaption>
+        </figure>
+        <figure class="night__pic night__pic--3" data-reveal>
+          <img src="https://images.unsplash.com/photo-1753598738086-1d4dc34a7ad1?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy"
+               alt="Luz de la mañana entrando por la ventanilla de un tren">
+          <figcaption><b>07:15</b> Primera luz. El revisor llama con el café veinticinco minutos antes de llegar.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- A bordo: tarjetas que cruzan una fotografía fija -->
+    <section class="aboard" id="a-bordo" aria-labelledby="aboard-h">
+      <div class="aboard__stage">
+        <img class="aboard__ground" src="https://images.unsplash.com/photo-1615378611657-19a2e6d281d0?w=2000&q=70&auto=format&fit=crop" width="2000" height="1333" loading="lazy"
+             alt="Andén de una estación con farolas encendidas de noche">
+        <div class="aboard__track" id="aboard-track">
+          <div class="aboard__intro">
+            <h2 id="aboard-h" class="h-head">A bordo</h2>
+            <p class="body">Cuatro maneras de pasar la noche en un tren de once coches, con revisor de noche en cada uno.</p>
+          </div>
+          <article class="card" style="--tone:#2d2a26">
+            <img src="https://images.unsplash.com/photo-1743947830163-27abdc527c1d?w=1100&h=800&q=72&auto=format&fit=crop" width="1100" height="800" loading="lazy"
+                 alt="Cabina de tren con dos camas hechas y cortina en la ventanilla">
+            <div class="card__panel">
+              <h3 class="card__name">Cabina privada</h3>
+              <p>Dos camas que se pliegan en sofá, lavabo y cierre por dentro.<span class="card__price">Desde 239 € la cabina</span></p>
+            </div>
+          </article>
+          <article class="card" style="--tone:#25292a">
+            <img src="https://images.unsplash.com/photo-1759349117105-467c7f8e1442?w=1100&h=800&q=72&auto=format&fit=crop" width="1100" height="800" loading="lazy"
+                 alt="Coche-restaurante con mesas puestas para la cena y luz de atardecer">
+            <div class="card__panel">
+              <h3 class="card__name">Coche-restaurante</h3>
+              <p>Cocina de la región que cruzas esa noche. Última mesa, a las 23:00.<span class="card__price">Menú de tres platos, 34 €</span></p>
+            </div>
+          </article>
+          <article class="card" style="--tone:#2f2722">
+            <img src="https://images.unsplash.com/photo-1774850816527-faf657392085?w=1100&h=800&q=72&auto=format&fit=crop&crop=left" width="1100" height="800" loading="lazy"
+                 alt="Compartimento con literas y un viajero dormido">
+            <div class="card__panel">
+              <h3 class="card__name">Litera de cuatro</h3>
+              <p>Colchón de 80 cm, sábanas de algodón, luz y enchufe propios.<span class="card__price">Desde 89 € la litera</span></p>
+            </div>
+          </article>
+          <article class="card" style="--tone:#23272c">
+            <img src="https://images.unsplash.com/photo-1674499025947-011f47386c0e?w=1100&h=800&q=72&auto=format&fit=crop" width="1100" height="800" loading="lazy"
+                 alt="Vista por la ventanilla de un tren al amanecer">
+            <div class="card__panel">
+              <h3 class="card__name">Desayuno en la cabina</h3>
+              <p>Café media hora antes de llegar, para ver entrar la ciudad.<span class="card__price">14 €, incluido en cabina</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rutas: fotografía fija, lista activa con salida en directo -->
+    <section class="routes" id="rutas" aria-labelledby="routes-h">
+      <div class="routes__pic" aria-hidden="true" id="routes-pic">
+        <img class="is-on" data-city="lisboa" src="https://images.unsplash.com/photo-1746253077260-79bd9659072d?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy" alt="">
+        <img data-city="paris" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy" alt="">
+        <img data-city="madrid" src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy" alt="">
+        <img data-city="milan" src="https://images.unsplash.com/photo-1575399877732-9363881b907e?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy" alt="">
+        <img data-city="zurich" src="https://images.unsplash.com/photo-1623481054648-191537ba3c3d?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy" alt="">
+        <img data-city="barcelona" src="https://images.unsplash.com/photo-1617119525631-2bee044d6020?w=1000&h=1250&q=72&auto=format&fit=crop" width="1000" height="1250" loading="lazy" alt="">
+      </div>
+      <div class="routes__list">
+        <h2 id="routes-h" class="h-head" data-reveal>Dónde despertar</h2>
+        <ul class="rows" id="rows">
+          <li class="row is-active" data-city="lisboa" data-from="Madrid Chamartín" data-to="Lisboa" data-dep="22:25" data-arr="07:40" data-tz="Europe/Madrid">
+            <button type="button" class="row__head" aria-expanded="true" aria-controls="r-lisboa">
+              <span class="row__name">Lisboa</span><span class="row__time">desde Madrid · 10 h 15</span>
+            </button>
+            <div class="row__body" id="r-lisboa"><div>
+              <p>Sales de Chamartín a las 22:25, cruzas Extremadura dormido y el Tajo con la primera luz. Santa Apolónia, a las 07:40, queda a diez minutos a pie de la Alfama.</p>
+              <p class="row__live" data-live>Sale cada noche a las 22:25.</p>
+            </div></div>
+          </li>
+          <li class="row" data-city="paris" data-from="Barcelona Sants" data-to="París" data-dep="20:50" data-arr="08:35" data-tz="Europe/Madrid">
+            <button type="button" class="row__head" aria-expanded="false" aria-controls="r-paris">
+              <span class="row__name">París</span><span class="row__time">desde Barcelona · 11 h 45</span>
+            </button>
+            <div class="row__body" id="r-paris"><div>
+              <p>Subes en Sants a las 20:50 después de cenar, pasas Portbou de madrugada y bajas en Austerlitz a las 08:35, junto al Sena.</p>
+              <p class="row__live" data-live>Sale cada noche a las 20:50.</p>
+            </div></div>
+          </li>
+          <li class="row" data-city="madrid" data-from="Lisboa Santa Apolónia" data-to="Madrid" data-dep="21:30" data-arr="08:45" data-tz="Europe/Lisbon">
+            <button type="button" class="row__head" aria-expanded="false" aria-controls="r-madrid">
+              <span class="row__name">Madrid</span><span class="row__time">desde Lisboa · 10 h 15</span>
+            </button>
+            <div class="row__body" id="r-madrid"><div>
+              <p>Sales de Santa Apolónia a las 21:30 con el puerto encendido y despiertas en la meseta. Chamartín, a las 08:45, está a doce minutos de la Gran Vía.</p>
+              <p class="row__live" data-live>Sale cada noche a las 21:30, hora de Lisboa.</p>
+            </div></div>
+          </li>
+          <li class="row" data-city="milan" data-from="Barcelona Sants" data-to="Milán" data-dep="19:40" data-arr="09:10" data-tz="Europe/Madrid">
+            <button type="button" class="row__head" aria-expanded="false" aria-controls="r-milan">
+              <span class="row__name">Milán</span><span class="row__time">desde Barcelona · 13 h 30</span>
+            </button>
+            <div class="row__body" id="r-milan"><div>
+              <p>Bordeas la costa francesa de noche y entras en Italia con el desayuno. Milano Centrale, a las 09:10, está a una parada de metro del Duomo.</p>
+              <p class="row__live" data-live>Sale cada noche a las 19:40.</p>
+            </div></div>
+          </li>
+          <li class="row" data-city="zurich" data-from="Barcelona Sants" data-to="Zúrich" data-dep="20:10" data-arr="08:55" data-tz="Europe/Madrid">
+            <button type="button" class="row__head" aria-expanded="false" aria-controls="r-zurich">
+              <span class="row__name">Zúrich</span><span class="row__time">desde Barcelona · 12 h 45</span>
+            </button>
+            <div class="row__body" id="r-zurich"><div>
+              <p>El tren sube por el Ródano mientras duermes y amanece junto al lago Lemán. Llegas a Zürich HB a las 08:55, a tiempo para la primera reunión.</p>
+              <p class="row__live" data-live>Sale cada noche a las 20:10.</p>
+            </div></div>
+          </li>
+          <li class="row" data-city="barcelona" data-from="París Austerlitz" data-to="Barcelona" data-dep="21:05" data-arr="08:50" data-tz="Europe/Paris">
+            <button type="button" class="row__head" aria-expanded="false" aria-controls="r-barcelona">
+              <span class="row__name">Barcelona</span><span class="row__time">desde París · 11 h 45</span>
+            </button>
+            <div class="row__body" id="r-barcelona"><div>
+              <p>Austerlitz a las 21:05, el Rosellón a medianoche y el Mediterráneo en la ventanilla al despertar. Sants, a las 08:50, a quince minutos del mar.</p>
+              <p class="row__live" data-live>Sale cada noche a las 21:05.</p>
+            </div></div>
+          </li>
+        </ul>
+        <figure class="map">
+          <svg viewBox="0 0 620 360" role="img" aria-labelledby="map-t" data-active="mad-lis">
+            <title id="map-t">Mapa de la red: Madrid–Lisboa, Barcelona–París, Barcelona–Milán y Barcelona–Zúrich</title>
+            <defs><clipPath id="map-frame"><rect width="620" height="360"/></clipPath></defs>
+            <path class="map__land" clip-path="url(#map-frame)" d="M258.1 4.3 L263.9 33.3 L217.5 29.0 L168.2 40.6 L179.8 58.0 L232.0 72.5 L269.7 104.4 L269.7 139.2 L266.8 168.2 L252.3 185.6 L194.3 184.1 L136.3 179.8 L72.5 176.9 L34.8 197.2 L46.4 226.2 L52.2 255.2 L43.5 295.8 L29.0 319.0 L49.3 342.2 L46.4 371.2 L89.9 365.4 L121.8 385.7 L142.1 400.2 L176.9 379.9 L246.5 377.0 L278.4 353.8 L295.8 330.6 L310.3 319.0 L295.8 298.7 L330.6 261.0 L368.3 243.6 L397.3 229.1 L394.4 214.6 L391.5 197.2 L420.5 182.7 L449.5 188.5 L478.5 194.3 L516.2 176.9 L542.3 171.1 L562.6 156.6 L588.7 165.3 L603.2 182.7 L611.9 200.1 L638.0 214.6 L638.0 -20.3 L319.0 -20.3 L319.0 0.0 L307.4 10.1 L275.5 13.0 Z M374.1 295.8 L394.4 285.6 L404.5 292.9 L394.4 304.5 L382.8 298.7 Z M553.9 226.2 L558.2 208.8 L577.1 197.2 L581.5 223.3 L571.3 243.6 Z M542.3 258.1 L548.1 313.2 L582.9 307.4 L588.7 258.1 L571.3 247.9 Z"/>
+            <path data-r="mad-lis" pathLength="1" d="M197 273 Q120 282 41 322"/>
+            <path data-r="bcn-par" pathLength="1" d="M368 244 Q326 140 373 28"/>
+            <path data-r="bcn-mil" pathLength="1" d="M368 244 Q482 206 571 125"/>
+            <path data-r="bcn-zur" pathLength="1" d="M368 244 Q438 122 551 70"/>
+            <g class="map__cities">
+              <circle data-c="lisboa" cx="41" cy="322" r="5"/><text x="41" y="350" text-anchor="middle">Lisboa</text>
+              <circle data-c="madrid" cx="197" cy="273" r="5"/><text x="197" y="301" text-anchor="middle">Madrid</text>
+              <circle data-c="barcelona" cx="368" cy="244" r="5"/><text x="380" y="272">Barcelona</text>
+              <circle data-c="paris" cx="373" cy="28" r="5"/><text x="387" y="34">París</text>
+              <circle data-c="zurich" cx="551" cy="70" r="5"/><text x="539" y="54" text-anchor="end">Zúrich</text>
+              <circle data-c="milan" cx="571" cy="125" r="5"/><text x="571" y="153" text-anchor="middle">Milán</text>
+            </g>
+          </svg>
+          <figcaption>La red: seis ciudades y cuatro vías, todas de noche.</figcaption>
+        </figure>
+        <a class="link-arrow" id="route-book" href="mailto:reservas@duermevela.example?subject=Reserva%3A%20Madrid%20%E2%86%92%20Lisboa">Reservar Madrid → Lisboa</a>
+      </div>
+    </section>
+
+    <!-- Tarifas como una carta -->
+    <section class="prices" id="tarifas" aria-labelledby="prices-h">
+      <div class="prices__side">
+        <h2 id="prices-h" class="h-mid" data-reveal>Tarifas</h2>
+        <p class="note" data-reveal style="--i:1">Por persona y trayecto, Madrid → Lisboa. En las rutas de más de doce horas, unos 20 € más.</p>
+      </div>
+      <div class="prices__cols">
+        <div class="group" data-reveal>
+          <h3 class="group__name">Dormir <span class="cur">en euros</span></h3>
+          <ul>
+            <li><span class="item"><span>Litera en cabina de seis</span><span class="price">59</span></span><span class="desc">Sábanas, almohada, agua y kit de aseo.</span></li>
+            <li><span class="item"><span>Litera en cabina de cuatro</span><span class="price">89</span></span><span class="desc">Luz de lectura y enchufe en cada litera.</span></li>
+            <li><span class="item"><span>Cabina privada, una o dos personas</span><span class="price">239</span></span><span class="desc">Precio por cabina, con lavabo y desayuno.</span></li>
+            <li><span class="item"><span>Cabina Gran Clase</span><span class="price">389</span></span><span class="desc">Ducha y aseo propios, cena y desayuno.</span></li>
+          </ul>
+        </div>
+        <div class="group" data-reveal style="--i:1">
+          <h3 class="group__name">A bordo <span class="cur">en euros</span></h3>
+          <ul>
+            <li><span class="item"><span>Cena de tres platos</span><span class="price">34</span></span><span class="desc">Menú de la región que cruzas esa noche.</span></li>
+            <li><span class="item"><span>Desayuno en la cabina</span><span class="price">14</span></span><span class="desc">Café, zumo, pan y algo dulce antes de llegar.</span></li>
+            <li><span class="item"><span>Bicicleta montada</span><span class="price">15</span></span><span class="desc">Viaja en el furgón, sin desmontar.</span></li>
+            <li><span class="item"><span>Perro o gato</span><span class="price">25</span></span><span class="desc">Sólo en cabina privada, con manta y cuenco.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas: la pregunta, el dato que la contesta y la respuesta; tres fotografías marcan el ritmo -->
+    <section class="faq" id="preguntas" aria-labelledby="faq-h">
+      <div class="faq__intro">
+        <div class="faq__intro-text">
+          <h2 id="faq-h" class="h-head" data-reveal>Antes de subir</h2>
+          <p class="body" data-reveal style="--i:1">Lo que nos preguntan cada noche en el andén, contestado con el dato exacto. Si la tuya no está, el equipo de noche contesta hasta las 02:00.</p>
+        </div>
+        <figure class="faq__photo" data-reveal style="--i:2">
+          <img src="https://images.unsplash.com/photo-1727674753842-e36170e60d85?w=1200&h=800&q=72&auto=format&fit=crop" width="1200" height="800" loading="lazy"
+               alt="Una viajera lee un libro sentada junto a la ventanilla de un compartimento">
+          <figcaption>Cabina de cuatro, coche 3, antes de apagar la luz.</figcaption>
+        </figure>
+      </div>
+
+      <dl class="faq__list">
+        <div class="faq__row" data-reveal>
+          <dt class="faq__q">¿Se duerme de verdad en un tren?</dt>
+          <dd class="faq__fig"><span class="faq__num" data-count="80">80</span> cm<span class="faq__unit">de colchón en cada litera</span></dd>
+          <dd class="faq__a">Sí. Las cortinas no dejan pasar luz, las almohadas son de plumón y entre la una y las cinco el tren baja la velocidad en los tramos de curvas. La mayoría de viajeros duerme más de seis horas.</dd>
+        </div>
+        <div class="faq__row" data-reveal>
+          <dt class="faq__q">¿Y si el tren llega tarde?</dt>
+          <dd class="faq__fig"><span class="faq__num" data-count="60">60</span> min<span class="faq__unit">de retraso y te devolvemos la mitad</span></dd>
+          <dd class="faq__a">Con más de 60 minutos de retraso te devolvemos la mitad del billete; con más de 120, el billete entero. Lo ingresamos solos en tu tarjeta, sin formularios, antes de que acabe la semana.</dd>
+        </div>
+        <div class="faq__row" data-reveal>
+          <dt class="faq__q">¿Puedo viajar sola en una cabina compartida?</dt>
+          <dd class="faq__fig"><span class="faq__num" data-count="0">0</span> €<span class="faq__unit">por reservar una cabina sólo para mujeres</span></dd>
+          <dd class="faq__a">Las cabinas de cuatro y de seis pueden reservarse sólo para mujeres, sin coste añadido. Se elige al comprar la litera y la revisora de ese coche lo sabe desde el embarque.</dd>
+        </div>
+      </dl>
+
+      <figure class="faq__band" data-reveal>
+        <img src="https://images.unsplash.com/photo-1732654796459-136e0368ad56?w=2000&h=860&q=72&auto=format&fit=crop" width="2000" height="860" loading="lazy"
+             alt="Pasillo de un coche-cama con las ventanillas encendidas por el sol bajo">
+        <figcaption>El pasillo de un coche-cama a las 07:20, con el sol entrando por las ventanillas.</figcaption>
+      </figure>
+
+      <dl class="faq__list">
+        <div class="faq__row" data-reveal>
+          <dt class="faq__q">¿Dónde va la maleta?</dt>
+          <dd class="faq__fig"><span class="faq__num" data-count="2">2</span> maletas<span class="faq__unit">de cabina bajo cada litera inferior</span></dd>
+          <dd class="faq__a">Al final de cada coche hay un portaequipajes con candado para bultos grandes, esquís y carritos de bebé. Las bicicletas viajan montadas en el furgón por 15 €.</dd>
+        </div>
+        <div class="faq__row" data-reveal>
+          <dt class="faq__q">¿Hay enchufes y wifi?</dt>
+          <dd class="faq__fig"><span class="faq__num">USB-C</span><span class="faq__unit">y enchufe junto a cada almohada</span></dd>
+          <dd class="faq__a">El wifi funciona donde hay cobertura. De una a cinco lo apagamos en los coches de cabinas para que nadie despierte con una llamada; el coche-restaurante lo mantiene encendido toda la noche.</dd>
+        </div>
+        <div class="faq__row" data-reveal>
+          <dt class="faq__q">¿Hay cabinas accesibles?</dt>
+          <dd class="faq__fig">Coche <span class="faq__num" data-count="6">6</span><span class="faq__unit">cabina adaptada en cada tren</span></dd>
+          <dd class="faq__a">Junto al coche-restaurante, con puerta de 90 cm, aseo propio, cama a 48 cm del suelo y un timbre que suena en el puesto del revisor. Te esperamos en el andén con rampa.</dd>
+        </div>
+        <div class="faq__row" data-reveal>
+          <dt class="faq__q">¿Hasta cuándo puedo cambiar el billete?</dt>
+          <dd class="faq__fig"><span class="faq__num" data-count="48">48</span> h<span class="faq__unit">antes de salir, gratis</span></dd>
+          <dd class="faq__a">Después, 15 € por cambio, hasta que el tren salga del andén. Si pierdes el tren por un retraso de otro tren nuestro, te subimos al siguiente sin coste.</dd>
+        </div>
+      </dl>
+
+      <aside class="crew" aria-labelledby="crew-h" data-reveal>
+        <img class="crew__photo" src="https://images.unsplash.com/photo-1752065003613-1f9cdcd83d1c?w=1100&h=900&q=72&auto=format&fit=crop" width="1100" height="900" loading="lazy"
+             alt="Dos viajeros con mochila hablan con el revisor junto a la puerta de un coche azul">
+        <div class="crew__text">
+          <h3 id="crew-h" class="h-mid">¿Otra duda? Pregunta al equipo de noche</h3>
+          <p>Doce personas contestan desde Madrid mientras los trenes van de camino: cambios de última hora, una litera más, un perro que no estaba previsto.</p>
+          <p class="crew__phone"><a href="tel:+34900412207">900 41 22 07</a></p>
+          <p class="crew__hours">Todos los días, de 18:00 a 02:00 · respuesta media por correo, 14 minutos</p>
+          <a class="btn" href="mailto:viajeros@duermevela.example?subject=Una%20pregunta%20antes%20de%20subir">Escribir al equipo de noche</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Amanecer: el fondo cambia a la luz del día -->
+  <div class="dawn">
+    <section class="cta" id="reservar" aria-labelledby="cta-h">
+      <div class="cta__head">
+        <h2 id="cta-h" class="h-head" data-reveal>Elige tu noche</h2>
+        <p class="cta__line" data-reveal style="--i:1">Nosotros ponemos las sábanas. Las literas de esta semana se reservan hasta una hora antes de salir, y la cabina se paga al confirmar.</p>
+      </div>
+      <form class="book" id="book" data-reveal style="--i:2">
+        <div class="book__field">
+          <label for="b-route">Ruta</label>
+          <select id="b-route" name="ruta">
+            <option>Madrid → Lisboa</option>
+            <option>Barcelona → París</option>
+            <option>Lisboa → Madrid</option>
+            <option>Barcelona → Milán</option>
+            <option>Barcelona → Zúrich</option>
+            <option>París → Barcelona</option>
+          </select>
+        </div>
+        <div class="book__field">
+          <label for="b-date">Noche de salida</label>
+          <input id="b-date" name="noche" type="date">
+        </div>
+        <div class="book__field">
+          <label for="b-berth">Plaza</label>
+          <select id="b-berth" name="plaza">
+            <option>Litera en cabina de seis · 59 €</option>
+            <option selected>Litera en cabina de cuatro · 89 €</option>
+            <option>Cabina privada · 239 €</option>
+            <option>Cabina Gran Clase · 389 €</option>
+          </select>
+        </div>
+        <button class="btn book__go" type="submit">Consultar disponibilidad</button>
+      </form>
+      <p class="cta__note" data-reveal style="--i:3">Te contestamos por correo con la cabina y el precio exactos en menos de una hora. <a class="link-plain" href="#rutas">Ver horarios</a></p>
+    </section>
+
+    <footer class="foot">
+      <p class="foot__name" aria-hidden="true" data-reveal data-split="chars">Duermevela</p>
+      <div class="foot__cols">
+        <div class="foot__col">
+          <h3>Estaciones y vías</h3>
+          <ul class="foot__list">
+            <li><span>Madrid Chamartín</span><span>vía 14</span></li>
+            <li><span>Barcelona Sants</span><span>vía 9</span></li>
+            <li><span>Lisboa Santa Apolónia</span><span>linha 3</span></li>
+            <li><span>París Austerlitz</span><span>voie 21</span></li>
+            <li><span>Milano Centrale</span><span>binario 7</span></li>
+            <li><span>Zürich HB</span><span>Gleis 31</span></li>
+          </ul>
+        </div>
+        <div class="foot__col">
+          <h3>Atención al viajero</h3>
+          <p><a href="tel:+34900412207">900 41 22 07</a><br>Todos los días, de 18:00 a 02:00, mientras los trenes van de camino.</p>
+          <p><a href="mailto:viajeros@duermevela.example">viajeros@duermevela.example</a></p>
+        </div>
+        <div class="foot__col">
+          <h3>La compañía</h3>
+          <ul class="foot__links">
+            <li><a href="#">Condiciones de transporte</a></li>
+            <li><a href="#">Accesibilidad</a></li>
+            <li><a href="#">Empleo a bordo</a></li>
+            <li><a href="#">Prensa</a></li>
+          </ul>
+        </div>
+        <div class="foot__col">
+          <h3>Para la noche</h3>
+          <ul class="foot__links">
+            <li><a href="#">Una lista para dormir en el tren</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Avisos de plazas libres</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__base">
+        <p>Duermevela, trenes nocturnos desde 2026</p>
+        <p><a href="https://unsplash.com" rel="noopener">Fotografías: Unsplash</a> · <a href="https://www.pexels.com" rel="noopener">Vídeo: Pexels</a></p>
+        <p>© 2026 · <a href="#">Privacidad</a> · <a href="#">Cookies</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
